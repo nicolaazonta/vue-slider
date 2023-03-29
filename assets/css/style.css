@@ -1,0 +1,21 @@
+
+.container #button_up{
+    position:absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 0;
+} 
+.container #button_down{
+    position:absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 0;
+} 
+
+
+/* .active{
+    display: block;
+} */
+#contenitore > img:not(.active) {
+    display: none;
+}
