@@ -11,11 +11,28 @@
     transform: translate(-50%);
     bottom: 0;
 } 
-
-
-/* .active{
-    display: block;
-} */
-#contenitore > img:not(.active) {
+.card>.card-img>img:not(.active),
+.card>.card-img-overlay>h4:not(.active),
+.card>.card-img-overlay>p:not(.active)
+{
     display: none;
+}
+
+img {
+    height: 30rem;
+    width: 100%;
+    object-fit: cover;
+}
+.card{
+    height: 30rem;
+}
+
+.card-img-overlay{top: auto!important;}
+
+h4{display: inline-block;}
+h4 , p{
+    background-color: rgba(0, 0, 0, 0.628);
+    color: white;
+    padding: .5rem;
+    border-radius: .5rem;
 }
