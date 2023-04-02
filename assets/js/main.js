@@ -32,11 +32,11 @@ const newImages = [
 ];
 
 
-let marker = 2;
+/* let marker = 2; */
 
 //display images into the dom
 
-newImages.forEach((imageTitleText, index) => {
+/* newImages.forEach((imageTitleText, index) => {
     let markup= 
         
         `<div class="card-img">
@@ -50,7 +50,7 @@ newImages.forEach((imageTitleText, index) => {
         ;
 
     document.querySelector('.card').insertAdjacentHTML('afterbegin', markup);  
-});
+}); */
 
 /* for (let i = 0 ; i < album.length ; i++){
     const imgCurrent = album[i];
@@ -59,12 +59,12 @@ newImages.forEach((imageTitleText, index) => {
 } */
 
 
-const allImages = document.querySelectorAll('.card-img > img');
+/* const allImages = document.querySelectorAll('.card-img > img');
 const allTitles = document.querySelectorAll('.card > .card-img-overlay > h4');
-const allText = document.querySelectorAll('.card > .card-img-overlay > p');
+const allText = document.querySelectorAll('.card > .card-img-overlay > p'); */
 
 //displau the next image
-const previousButton = document.getElementById('button_up');
+/* const previousButton = document.getElementById('button_up');
 previousButton.addEventListener('click' , function() {
 
     console.log('arrowUP');
@@ -86,10 +86,10 @@ previousButton.addEventListener('click' , function() {
     prevText.classList.add('active');
     const prevImage = allImages[marker];
     prevImage.classList.add('active');
-})
+}) */
 
 //display the previous image
-const nextButton = document.getElementById('button_down');
+/* const nextButton = document.getElementById('button_down');
 nextButton.addEventListener('click' , function() {
 
     console.log('arrowDOWN');    
@@ -111,7 +111,68 @@ nextButton.addEventListener('click' , function() {
     prevText.classList.add('active');
     const prevImage = allImages[marker];
     prevImage.classList.add('active');    
-})
+}) */
 
+const { createApp } = Vue
+createApp({
+    data() {
+        return{
+            activeSlide: 0,
+            newImages: [
+                {
+                    image: './assets/img/01.webp',
+                    title: 'Marvel\'s Spiderman Miles Morale',
+                    text: 'Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.',
+                }, 
+                {
+                    image: './assets/img/02.webp',
+                    title: 'Ratchet & Clank: Rift Apart',
+                    text: 'Go dimension-hopping with Ratchet and Clank as they take on an evil emperor from another reality.',
+                }, 
+                {
+                    image: './assets/img/03.webp',
+                    title: 'Fortnite',
+                    text: "Grab all of your friends and drop into Epic Games Fortnite, a massive 100 - player face - off that combines looting, crafting, shootouts and chaos.",
+                }, 
+                {
+                    image: './assets/img/04.webp',
+                    title: 'Stray',
+                    text: 'Lost, injured and alone, a stray cat must untangle an ancient mystery to escape a long-forgotten city',
+                }, 
+                {
+                    image: './assets/img/05.webp',
+                    title: "Marvel's Avengers",
+                    text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
+                } 
+            ]
+        }
+    },
+    methods: {
+        next(){
+            console.log('next');
+            this.activeSlide++;
+            if (this.activeSlide == this.newImages.length) {
+                this.activeSlide = 0;
+            }
+        },
+        prev(){
+            console.log('prev');
+            this.activeSlide--;
 
+            if (this.activeSlide < 0) {
+                this.activeSlide = this.newImages.length - 1;
+            }
+        },
+     /*    cruiseControl(){
+            timer
+        },
+        stopIt() {
+            //alert('entraaaaaaaaaaa'),
+            clearInterval(timer) 
+        } */
+    },
+    mounted(){
+        const timer = setInterval(this.next, 1500)
+    }
+}).mount('#app')
 
